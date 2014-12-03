@@ -2,12 +2,12 @@
 /*
  * Plugin Name: Content Syndication Toolkit Reader
  * Plugin URI: 
- * Description: 
+ * Description: Allows clients to subscribe to content created using the "Content Syndication Toolkit" plugin.
  * Author: Benjamin Moody
  * Version: 1.0
  * Author URI: http://www.benjaminmoody.com
  * License: GPL2+
- * Text Domain: prso_plugin_framework
+ * Text Domain: prso_synd_toolkit_reader_plugin
  * Domain Path: /languages/
  */
 
