@@ -3,7 +3,7 @@ Contributors: ben.moody
 Tags: content syndicator,content syndication,content aggregator,content aggregation,content publisher,syndication network,aggregator network,seo,content publishing
 Requires at least: 3.0
 Tested up to: 4.0.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -53,5 +53,9 @@ Not a problem, try and resync with your content provider:
 2. Click 'Reset Index', then click the 'Sync Content' button and wait until it completes
 
 == Changelog ==
+
 = 1.0 =
 Initial plugin launch.
+
+= 1.0.1 =
+Added canonical link generation for client posts.
