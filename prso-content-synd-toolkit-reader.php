@@ -35,8 +35,8 @@ register_activation_hook( __FILE__, array( 'PrsoSyndToolkitReader', 'plugin_acti
 register_deactivation_hook( __FILE__, array( 'PrsoSyndToolkitReader', 'plugin_deactivation' ) );
 
 
-prso_src_set_init();
-function prso_src_set_init() {
+prso_synd_toolkit_reader_init();
+function prso_synd_toolkit_reader_init() {
 	
 	//Init vars
 	global $prso_synd_toolkit_reader_options;
