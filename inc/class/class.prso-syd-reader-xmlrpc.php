@@ -208,8 +208,13 @@ class PrsoSyndReaderXMLRPC {
 	*/
 	public function detect_webhook_push_request( $query ) {
 		
+		
+		
 		//Detect if our custom push webhook is in the request
-		if( isset($query->query_vars[ $this->push_webhook_var ]) && ($query->query_vars[ $this->push_webhook_var ] == 'true') ) {
+		if( isset($query->query_vars[ $this->push_webhook_var ]) ) {
+			
+			//Cache url to master site
+			$this->xml_rpc_url = trailingslashit(esc_url($query->query_vars[ $this->push_webhook_var ])) . 'xmlrpc.php';
 			
 			//Init request to Content Syndication Toolkit Master to get posts
 			$this->get_syndication_posts();
@@ -257,8 +262,6 @@ class PrsoSyndReaderXMLRPC {
 		$this->init_post_import( $results );
 		
 		PrsoSyndToolkitReader::plugin_error_log( $results );
-		
-		exit();
 		
 	}
 	
