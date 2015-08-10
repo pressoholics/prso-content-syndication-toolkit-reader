@@ -80,9 +80,40 @@ class PrsoSyndToolkitReader {
 		//Add canonical post content filter
 		add_action( 'wp', array($this, 'remove_wp_canonical_for_post') );
 		add_action( 'wp_head', array($this, 'add_canonical_to_head') );
+		
 		//Add canonical post content filter
 		add_filter( 'the_content', array($this, 'add_canonical_to_content') );
 		
+		//Detect post status override option and override imported post status
+		add_filter( 'wp_import_post_data_processed', array($this, 'override_imported_post_status'), 10, 2 );
+		
+	}
+	
+	/**
+	* override_imported_post_status
+	* 
+	* @Called By Filter 'wp_import_post_data_processed'
+	*
+	* Overrides imported posts post type based on that set in plugin options
+	*
+	* @access 	public
+	* @author	Ben Moody
+	*/
+	public function override_imported_post_status( $postdata, $post ) {
+		
+		//vars
+		$post_status = $post['status'];
+		
+		//Only override if status set in options is anything other than auto
+		if( isset(self::$class_config['import_options']['post-status']) && ( 'auto' !== self::$class_config['import_options']['post-status'] ) ) {
+			$post_status = esc_attr( self::$class_config['import_options']['post-status'] );
+		}
+		
+		$postdata['post_status'] = $post_status;
+		
+		//PrsoSyndToolkitReader::plugin_error_log( $postdata['post_status'] );
+		
+		return $postdata;
 	}
 	
 	/**

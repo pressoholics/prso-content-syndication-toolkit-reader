@@ -76,6 +76,17 @@ function prso_synd_toolkit_reader_init() {
 		
 	}
 	
+	//Cache post status override option
+	if( isset($prso_synd_toolkit_reader_options['post-status']) ) {
+		
+		if( empty($prso_synd_toolkit_reader_options['post-status']) ) {
+			$prso_synd_toolkit_reader_options['post-status'] = 'auto';
+		}
+		
+		$config_options['import_options']['post-status'] = esc_attr( $prso_synd_toolkit_reader_options['post-status'] );
+		
+	}
+	
 	//Instatiate plugin class and pass config options array
 	new PrsoSyndToolkitReader( $config_options );
 		

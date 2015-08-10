@@ -297,6 +297,22 @@ if ( !class_exists( "PrsoSyndToolkitReaderOptions" ) ) {
 					    'desc'     => __('You can change the author on an individual post via the post edit view.', $this->text_domain),
 					    // Must provide key => value pairs for select options
 					    'options'  => $_user_array
+					),
+					array(
+					    'id'       => 'post-status',
+					    'type'     => 'select',
+					    'title'    => __('Post Status Override', $this->text_domain),
+					    'placeholder' => __('Select a Status', $this->text_domain),
+					    'subtitle' => __('Select post status for all syndicated content.', $this->text_domain),
+					    'desc'     => __('Override the post status for all syndicated content.', $this->text_domain),
+					    // Must provide key => value pairs for select options
+					    'options'  => array(
+					    	'auto' 		=> 	'Automatic, keep original status',
+					    	'draft'		=>	'Draft',
+					    	'private'	=>	'Private',
+					    	'pending'	=>	'Pending',
+					    	'publish'	=>	'Published'
+					    )
 					)
 				)
 			);
