@@ -71,6 +71,7 @@ BugFix: Added support for iframe content such as Youtube, Soundcloud, ect
 
 = 1.1 =
 Added support from multiple master sites to syndicate content to a single reader site (many to one syndication)
+Add option to allow users to override imported post status
 
 == Upgrade Notice ==
 
@@ -85,3 +86,4 @@ BugFix: Added support for iframe content such as Youtube, Soundcloud, ect
 
 = 1.1 =
 Added support from multiple master sites to syndicate content to a single reader site (many to one syndication)
+Add option to allow users to override imported post status
