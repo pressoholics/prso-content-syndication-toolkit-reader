@@ -208,8 +208,6 @@ class PrsoSyndReaderXMLRPC {
 	*/
 	public function detect_webhook_push_request( $query ) {
 		
-		
-		
 		//Detect if our custom push webhook is in the request
 		if( isset($query->query_vars[ $this->push_webhook_var ]) ) {
 			
@@ -308,8 +306,8 @@ class PrsoSyndReaderXMLRPC {
 	*/
 	private function init_post_import( $results ) {
 		
-		require ( ABSPATH . 'wp-admin/includes/post.php' );
-		require ( ABSPATH . 'wp-admin/includes/image.php' );
+		require_once ( ABSPATH . 'wp-admin/includes/post.php' );
+		require_once ( ABSPATH . 'wp-admin/includes/image.php' );
 		
 		//Setup our custom image sizes as provided by the master server
 		if( isset($results['image_sizes']) ) {

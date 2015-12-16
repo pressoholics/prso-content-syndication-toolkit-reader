@@ -207,6 +207,11 @@ class PrsoSyndToolkitReader {
 		//Get post permalink (back link) text
 		$post_permalink_text = get_post_meta( $post->ID, 'pcst_back_link_text', TRUE );
 		
+		//Is this a post from the syndication plugin
+		if( empty($post_permalink) ) {
+			return $content;
+		}
+		
 		//Check for valid text
 		if( empty($post_permalink_text) ) {
 		

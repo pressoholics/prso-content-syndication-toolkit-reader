@@ -2,8 +2,8 @@
 Contributors: ben.moody
 Tags: content syndicator,content syndication,content aggregator,content aggregation,content publisher,syndication network,aggregator network,seo,content publishing
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 1.1
+Tested up to: 4.3.1
+Stable tag: 1.21
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -73,6 +73,12 @@ BugFix: Added support for iframe content such as Youtube, Soundcloud, ect
 Added support from multiple master sites to syndicate content to a single reader site (many to one syndication)
 Add option to allow users to override imported post status
 
+= 1.2 =
+Bugfixes
+
+= 1.21 =
+Fixed issue where non syndication posts displayed canonical link
+
 == Upgrade Notice ==
 
 = 1.0.2 =
@@ -87,3 +93,9 @@ BugFix: Added support for iframe content such as Youtube, Soundcloud, ect
 = 1.1 =
 Added support from multiple master sites to syndicate content to a single reader site (many to one syndication)
 Add option to allow users to override imported post status
+
+= 1.2 =
+Bugfixes
+
+= 1.21 =
+Fixed issue where non syndication posts displayed canonical link
