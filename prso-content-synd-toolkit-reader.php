@@ -87,6 +87,17 @@ function prso_synd_toolkit_reader_init() {
 		
 	}
 	
+	//Cache post index override option
+	if( isset($prso_synd_toolkit_reader_options['post-seo-noindex']) ) {
+		
+		if( empty($prso_synd_toolkit_reader_options['post-seo-noindex']) ) {
+			$prso_synd_toolkit_reader_options['post-seo-noindex'] = '0';
+		}
+		
+		$config_options['import_options']['post-seo-noindex'] = esc_attr( $prso_synd_toolkit_reader_options['post-seo-noindex'] );
+		
+	}
+	
 	//Instatiate plugin class and pass config options array
 	new PrsoSyndToolkitReader( $config_options );
 		

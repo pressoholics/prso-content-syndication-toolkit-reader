@@ -313,6 +313,20 @@ if ( !class_exists( "PrsoSyndToolkitReaderOptions" ) ) {
 					    	'pending'	=>	'Pending',
 					    	'publish'	=>	'Published'
 					    )
+					),
+					array(
+					    'id'       => 'post-seo-noindex',
+					    'type'     => 'select',
+					    'title'    => __('Yoast SEO Index', $this->text_domain),
+					    'placeholder' => __('Select a Yoast SEO Index Setting', $this->text_domain),
+					    'subtitle' => __('Select a Yoast SEO Index Setting for all syndicated content.', $this->text_domain),
+					    'desc'     => __('Override the Yoast SEO Index Setting for all syndicated content.', $this->text_domain),
+					    // Must provide key => value pairs for select options
+					    'options'  => array(
+					    	'0' 		=> 	'Site default',
+					    	'2'		    =>	'Index',
+					    	'1'	        =>	'No Index'
+					    )
 					)
 				)
 			);
