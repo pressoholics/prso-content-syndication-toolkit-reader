@@ -208,11 +208,30 @@ class PrsoSyndReaderXMLRPC {
 	*/
 	public function detect_webhook_push_request( $query ) {
 		
+		//vars
+		$master_site_url = NULL;
+		
+		if( !isset($query->query_vars[ $this->push_webhook_var ]) ) {
+			return;
+		}
+		
+		//Cache mater site url from query var
+		$master_site_url = $query->query_vars[ $this->push_webhook_var ];
+		
 		//Detect if our custom push webhook is in the request
 		if( isset($query->query_vars[ $this->push_webhook_var ]) ) {
 			
+			//Detect if we have been provided with url to master site via url param
+			if( 'true' == $master_site_url ) {
+				
+				$master_site_url = $this->class_config['xmlrpc']['url'];
+				
+			}
+			
+			$master_site_url = trailingslashit(esc_url( $master_site_url ));
+			
 			//Cache url to master site
-			$this->xml_rpc_url = trailingslashit(esc_url($query->query_vars[ $this->push_webhook_var ])) . 'xmlrpc.php';
+			$this->xml_rpc_url = $master_site_url . 'xmlrpc.php';
 			
 			//Init request to Content Syndication Toolkit Master to get posts
 			$this->get_syndication_posts();

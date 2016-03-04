@@ -4,7 +4,7 @@
  * Plugin URI: 
  * Description: Allows clients to subscribe to content created using the "Content Syndication Toolkit" plugin.
  * Author: Benjamin Moody
- * Version: 1.21
+ * Version: 1.22
  * Author URI: http://www.benjaminmoody.com
  * License: GPL2+
  * Text Domain: prso_synd_toolkit_reader_plugin
@@ -13,7 +13,7 @@
 
 //Define plugin constants
 define( 'PRSOSYNDTOOLKITREADER__MINIMUM_WP_VERSION', '3.0' );
-define( 'PRSOSYNDTOOLKITREADER__VERSION', '1.21' );
+define( 'PRSOSYNDTOOLKITREADER__VERSION', '1.22' );
 define( 'PRSOSYNDTOOLKITREADER__DOMAIN', 'prso_synd_toolkit_reader_plugin' );
 
 //Plugin admin options will be available in global var with this name, also is database slug for options

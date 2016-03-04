@@ -2,7 +2,7 @@
 Contributors: ben.moody
 Tags: content syndicator,content syndication,content aggregator,content aggregation,content publisher,syndication network,aggregator network,seo,content publishing
 Requires at least: 3.0
-Tested up to: 4.3.1
+Tested up to: 4.4.2
 Stable tag: 1.21
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -79,6 +79,9 @@ Bugfixes
 = 1.21 =
 Fixed issue where non syndication posts displayed canonical link
 
+= 1.22 =
+Fixed issue where reader was no longer authenicating with master site
+
 == Upgrade Notice ==
 
 = 1.0.2 =
@@ -99,3 +102,6 @@ Bugfixes
 
 = 1.21 =
 Fixed issue where non syndication posts displayed canonical link
+
+= 1.22 =
+Fixed issue where reader was no longer authenicating with master site
