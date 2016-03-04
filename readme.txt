@@ -3,7 +3,7 @@ Contributors: ben.moody
 Tags: content syndicator,content syndication,content aggregator,content aggregation,content publisher,syndication network,aggregator network,seo,content publishing
 Requires at least: 3.0
 Tested up to: 4.4.2
-Stable tag: 1.21
+Stable tag: 1.22
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
