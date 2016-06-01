@@ -432,7 +432,7 @@ class PrsoSyndReaderXMLRPC {
 			if( strpos($result['errorMsg'], 'HTTP status code was not 200') ) {
 				
 				$this->send_admin_email(
-					_x( 'Problem contacting the server. Please confirm your API Username and Password are correct. Error: ' . $result['errorMsg'], 'text', PRSOSYNDTOOLKITREADER__DOMAIN )
+					_x( 'Problem contacting the server. Please confirm your API Username and Password are correct. Error: ' . $result['errorMsg'] . ' CODE: ' . $result['errorCode'], 'text', PRSOSYNDTOOLKITREADER__DOMAIN )
 				);
 				
 			} else {
