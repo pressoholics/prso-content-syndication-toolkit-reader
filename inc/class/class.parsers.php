@@ -43,6 +43,16 @@ class WXR_Parser {
 			echo __( 'Details are shown above. The importer will now try again with a different parser...', 'wordpress-importer' ) . '</p>';
 		}
 
+		//Creat tmp file for import
+		$upload_dir = wp_upload_dir();
+		$tmp_file	= $upload_dir['basedir'] . "/contentreader.xml";
+		
+		$myfile = fopen( $tmp_file, "w") or die("Unable to open file!");
+		fwrite($myfile, $file);
+		
+		$file = $upload_dir['basedir'] . "/contentreader.xml";
+
+
 		// use regular expressions if nothing else available or this is bad XML
 		$parser = new WXR_Parser_Regex;
 		return $parser->parse( $file );

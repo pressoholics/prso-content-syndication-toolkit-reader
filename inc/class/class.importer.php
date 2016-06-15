@@ -333,7 +333,7 @@ class WP_Import extends WP_Importer {
 	function process_posts() {
 		
 		$this->posts = apply_filters( 'wp_import_posts', $this->posts );
-
+		
 		foreach ( $this->posts as $post ) {
 			$post = apply_filters( 'wp_import_post_data_raw', $post );
 			
