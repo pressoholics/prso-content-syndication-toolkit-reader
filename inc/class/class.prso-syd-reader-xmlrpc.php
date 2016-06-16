@@ -34,6 +34,9 @@ class PrsoSyndReaderXMLRPC {
 			
 		}
 		
+		//Add cron job action to get posts
+		add_action( 'prso_synd_toolkit_reader_cron_job_init', array($this, 'cron_job_init') );
+		
 		//Add custom query var for our push notification webhook
 		add_filter( 'query_vars', array($this, 'add_push_webhook_query_var') ); 
 		
@@ -48,6 +51,10 @@ class PrsoSyndReaderXMLRPC {
 		
 		//Add action to rollback import on error
 		add_action( 'pcst_rollback_import', array($this, 'rollback_post_import'), 10, 3 );
+		
+		//Test pull
+		//$this->init_syndication_push_request();
+		//do_action( 'prso_synd_toolkit_reader_cron_job_init' );
 		
 	}
 	
@@ -233,11 +240,43 @@ class PrsoSyndReaderXMLRPC {
 			//Cache url to master site
 			$this->xml_rpc_url = $master_site_url . 'xmlrpc.php';
 			
-			//Init request to Content Syndication Toolkit Master to get posts
-			$this->get_syndication_posts();
+			//Make request for posts
+			$this->init_syndication_push_request();
 			
 		}
 		
+		
+	}
+	
+	public function init_syndication_push_request() {
+		
+		//vars
+		$master_site_url = NULL;
+		
+		//Check xml_rpc_url isset
+		if( !isset($this->xml_rpc_url) ) {
+			
+			$master_site_url = $this->class_config['xmlrpc']['url'];
+			
+			$master_site_url = trailingslashit(esc_url( $master_site_url ));
+			
+			//Cache url to master site
+			$this->xml_rpc_url = $master_site_url . 'xmlrpc.php';
+			
+		}
+		
+		//Init request to Content Syndication Toolkit Master to get posts
+		$this->get_syndication_posts();
+		
+	}
+	
+	public function cron_job_init() {
+		
+		//set this is a cron job pull
+		define( 'PRSOSYNDTOOLKITREADER__IS_CRON_JOB', TRUE );
+		
+		//Init request to Content Syndication Toolkit Master to get posts
+		$this->init_syndication_push_request();
 		
 	}
 	

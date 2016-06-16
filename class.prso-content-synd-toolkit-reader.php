@@ -29,6 +29,11 @@ class PrsoSyndToolkitReader {
 	 */
 	public static function plugin_activation( $network_wide ) {
 		
+		$PrsoSyndReaderXMLRPC = NULL;
+		
+		//Schedule wp cron job for backup pull requests
+		wp_schedule_event( current_time( 'timestamp' ), 'hourly', 'prso_synd_toolkit_reader_cron_job_init');
+		
 	}
 
 	/**

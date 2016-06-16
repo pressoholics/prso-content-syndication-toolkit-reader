@@ -150,8 +150,11 @@ class WP_Import extends WP_Importer {
 
 		wp_defer_term_counting( false );
 		wp_defer_comment_counting( false );
-
-		echo '<p>' . __( 'All done.', 'wordpress-importer' ) . '</p>';
+		
+		if( !defined( 'PRSOSYNDTOOLKITREADER__IS_CRON_JOB' ) ) {
+			echo '<p>' . __( 'All done.', 'wordpress-importer' ) . '</p>';
+		}
+		
 
 		do_action( 'import_end' );
 	}
