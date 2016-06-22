@@ -2,8 +2,8 @@
 Contributors: ben.moody
 Tags: content syndicator,content syndication,content aggregator,content aggregation,content publisher,syndication network,aggregator network,seo,content publishing
 Requires at least: 3.0
-Tested up to: 4.4.2
-Stable tag: 1.22
+Tested up to: 4.5.2
+Stable tag: 1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -104,4 +104,8 @@ Bugfixes
 Fixed issue where non syndication posts displayed canonical link
 
 = 1.22 =
-Fixed issue where reader was no longer authenicating with master site
+Fixed issue where reader was no longer authenticating with master site
+
+= 1.3 =
+Improved fallback for xml parsing and import
+Added WP Cron Job to check for new posts automatically without pull request from master site
