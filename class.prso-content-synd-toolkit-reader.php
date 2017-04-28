@@ -300,7 +300,7 @@ class PrsoSyndToolkitReader {
 		$request_url = add_query_arg( PRSOSYNDTOOLKITREADER__WEBHOOK_PARAM, 'true', get_home_url() );
 		
 		//Make a pull request and get the body output
-		$response = wp_remote_request( $request_url, array('timeout' => 300) );
+		$response = wp_remote_request( $request_url, array('timeout' => 5) );
 		
 		//Log response
 		self::plugin_error_log( $response );
@@ -315,11 +315,7 @@ class PrsoSyndToolkitReader {
 			} else {
 				
 				//Check for media import error
-				if( strpos($response['body'], 'Media') ) {
-				
-					wp_send_json_error( _x( 'Problem with importing Media from server. Please wait and try again.', 'text', PRSOSYNDTOOLKITREADER__DOMAIN ) );
-					
-				} elseif(strpos($response['body'], 'All done')) {
+				if(strpos($response['body'], 'All done')) {
 					
 					wp_send_json_success( _x( 'Post Pull Completed', 'text', PRSOSYNDTOOLKITREADER__DOMAIN ) );
 					
@@ -553,15 +549,19 @@ class PrsoSyndToolkitReader {
 	}
 	
 	public static function plugin_error_log( $var ) {
-		
-		ini_set( 'log_errors', 1 );
-		ini_set( 'error_log', PRSOSYNDTOOLKITREADER__PLUGIN_DIR . '/debug.log' );
-		
-		if( !is_string($var) ) {
-			error_log( print_r($var, true) );
-		} else {
-			error_log( $var );
-		}
+
+	    if( defined('WP_DEBUG') && (TRUE === WP_DEBUG) ) {
+
+            ini_set( 'log_errors', 1 );
+            ini_set( 'error_log', PRSOSYNDTOOLKITREADER__PLUGIN_DIR . '/debug.log' );
+
+            if( !is_string($var) ) {
+                error_log( print_r($var, true) );
+            } else {
+                error_log( $var );
+            }
+
+        }
 		
 	}
 	
@@ -574,38 +574,43 @@ class PrsoSyndToolkitReader {
 	* @author	Ben Moody
 	*/
 	public static function send_admin_email( $error_msg, $error_type = 'pull_error', $admin_email = NULL ) {
-		
-		//Init vars
-		$inc_templates = PRSOSYNDTOOLKITREADER__PLUGIN_DIR . "inc/templates/email/{$error_type}.php";
-		
-		$subject = NULL;
-		$headers = array();
-		$message = NULL;
-		
-		if( file_exists($inc_templates) ) {
-		
-			//send admin an email to let them know
-			if( empty($admin_email) ) {
-				$admin_email = get_option( 'admin_email' );
-			}
-			
-			//Set email content
-			$subject = _x( 'WP Content Syndication Toolkit', 'text', PRSOSYNDTOOLKITREADER__DOMAIN );
-			
-			ob_start();
-				include_once( $inc_templates );
-			$message = ob_get_contents();
-			ob_end_clean();
-			
-			//Send Email to admin
-			wp_mail( $admin_email, $subject, $message );
-			
-			//Error log
-			PrsoSyndToolkitReader::plugin_error_log( $message );
-			
-			return;
-		}
-		
+
+        if( defined('WP_DEBUG') && (TRUE === WP_DEBUG) ) {
+
+            //Init vars
+            $inc_templates = PRSOSYNDTOOLKITREADER__PLUGIN_DIR . "inc/templates/email/{$error_type}.php";
+
+            $subject = NULL;
+            $headers = array();
+            $message = NULL;
+
+            if( file_exists($inc_templates) ) {
+
+                //send admin an email to let them know
+                if( empty($admin_email) ) {
+                    $admin_email = get_option( 'admin_email' );
+                }
+
+                //Set email content
+                $subject = _x( 'WP Content Syndication Toolkit', 'text', PRSOSYNDTOOLKITREADER__DOMAIN );
+
+                ob_start();
+                include_once( $inc_templates );
+                $message = ob_get_contents();
+                ob_end_clean();
+
+                //Send Email to admin
+                wp_mail( $admin_email, $subject, $message );
+
+                //Error log
+                PrsoSyndToolkitReader::plugin_error_log( $message );
+
+                return;
+            }
+
+        }
+
+        return;
 	}
 	
 }
