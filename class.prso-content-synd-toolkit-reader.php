@@ -302,6 +302,9 @@ class PrsoSyndToolkitReader {
 		//Make a pull request and get the body output
 		$response = wp_remote_request( $request_url, array('timeout' => 300) );
 		
+		//Log response
+		self::plugin_error_log( $response );
+		
 		//Check response code
 		if( isset($response['response']['code']) ) {
 			

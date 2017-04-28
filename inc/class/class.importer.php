@@ -743,7 +743,7 @@ class WP_Import extends WP_Importer {
 		$upload = wp_upload_bits( $file_name, 0, '', $post['upload_date'] );
 		if ( $upload['error'] )
 			return new WP_Error( 'upload_dir_error', $upload['error'] );
-
+		
 		// fetch the remote url and write it to the placeholder file
 		$headers = wp_get_http( $url, $upload['file'] );
 		

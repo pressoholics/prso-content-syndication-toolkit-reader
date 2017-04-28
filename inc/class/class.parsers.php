@@ -11,6 +11,8 @@
  */
 class WXR_Parser {
 	function parse( $file ) {
+		
+		/**
 		// Attempt to use proper XML parsers first
 		if ( extension_loaded( 'simplexml' ) ) {
 			$parser = new WXR_Parser_SimpleXML;
@@ -42,6 +44,7 @@ class WXR_Parser {
 			echo '<p><strong>' . __( 'There was an error when reading this WXR file', 'wordpress-importer' ) . '</strong><br />';
 			echo __( 'Details are shown above. The importer will now try again with a different parser...', 'wordpress-importer' ) . '</p>';
 		}
+		**/
 
 		//Creat tmp file for import
 		$upload_dir = wp_upload_dir();
