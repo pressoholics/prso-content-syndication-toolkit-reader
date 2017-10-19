@@ -83,17 +83,18 @@ class PrsoSyndReaderXMLRPC {
 		$error 			= NULL;
 		
 		//include Incutio XML-RPC Library from wordpress core
-		require( PRSOSYNDTOOLKITREADER__XMLRPC_LIB );
-		
-		$client = new IXR_Client( $this->xml_rpc_url );
-		
-		if(!$client->query( $method, $params, $this->username, $this->password )) { 
-			
+		include_once( ABSPATH . WPINC . '/class-IXR.php' );
+		include_once( ABSPATH . WPINC . '/class-wp-http-ixr-client.php' );
+
+		$client = new WP_HTTP_IXR_Client( $this->xml_rpc_url );
+
+		if(!$client->query( $method, $params, $this->username, $this->password )) {
+
 			return array(
 				'errorCode' => $client->getErrorCode(),
 				'errorMsg'	=> $client->getErrorMessage()
 			);
-			   
+
         }
         
         $results = $client->getResponse();
