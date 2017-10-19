@@ -2,8 +2,8 @@
 Contributors: ben.moody
 Tags: content syndicator,content syndication,content aggregator,content aggregation,content publisher,syndication network,aggregator network,seo,content publishing
 Requires at least: 3.0
-Tested up to: 4.7.4
-Stable tag: 1.4
+Tested up to: 4.8.2
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -85,6 +85,9 @@ Fixed issue where reader was no longer authenicating with master site
 = 1.4 =
 Improved connection and other bugfixes
 
+= 1.5 =
+Improved connection with sites using SSL (HTTPS)
+
 == Upgrade Notice ==
 
 = 1.0.2 =
@@ -115,3 +118,6 @@ Added WP Cron Job to check for new posts automatically without pull request from
 
 = 1.4 =
 Important Update: Improved connection and other bugfixes
+
+= 1.5 =
+Improved connection with sites using SSL (HTTPS)

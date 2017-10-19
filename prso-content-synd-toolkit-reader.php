@@ -13,7 +13,7 @@
 
 //Define plugin constants
 define( 'PRSOSYNDTOOLKITREADER__MINIMUM_WP_VERSION', '3.0' );
-define( 'PRSOSYNDTOOLKITREADER__VERSION', '1.4' );
+define( 'PRSOSYNDTOOLKITREADER__VERSION', '1.5' );
 define( 'PRSOSYNDTOOLKITREADER__DOMAIN', 'prso_synd_toolkit_reader_plugin' );
 
 //Plugin admin options will be available in global var with this name, also is database slug for options
