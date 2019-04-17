@@ -92,6 +92,9 @@ class PrsoSyndToolkitReader {
 		//Detect post status override option and override imported post status
 		add_filter( 'wp_import_post_data_processed', array($this, 'override_imported_post_status'), 10, 2 );
 		
+		//Detect post SEO index override option and override imported post SEO index status
+		add_filter( 'wp_import_post_meta', array($this, 'override_imported_post_seo_index_status'), 10, 2 );
+		
 	}
 	
 	/**
@@ -119,6 +122,31 @@ class PrsoSyndToolkitReader {
 		//PrsoSyndToolkitReader::plugin_error_log( $postdata['post_status'] );
 		
 		return $postdata;
+	}
+	
+	/**
+	* override_imported_post_seo_index_status
+	* 
+	* @Called By Filter 'wp_import_post_meta'
+	*
+	* Overrides imported posts SEO index status based on that set in plugin options
+	*
+	* @access 	public
+	* @author	Anthony Eden
+	*/
+	public function override_imported_post_seo_index_status( $postmeta, $post_id, $post ) {
+		
+		//Only override if status set in options is anything other than '0' (default)
+		if( isset(self::$class_config['import_options']['post-seo-noindex']) && ( '0' !== self::$class_config['import_options']['post-seo-noindex'] ) ) {
+			
+            $postmeta[] = array(
+                'key' => '_yoast_wpseo_meta-robots-noindex',
+                'value' => self::$class_config['import_options']['post-seo-noindex'],
+            );
+			
+		}
+        
+		return $postmeta;
 	}
 	
 	/**
